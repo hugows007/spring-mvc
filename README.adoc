@@ -1,0 +1,46 @@
+= Spring MVC
+
+Projeto desenvolvido e disponibilizado para fins de consultas.
+
+*Status: Em desenvolvimento*
+
+---
+
+=== Tecnologias
+----
+* Java
+* Maven
+* Spring MVC
+* JPA Hibernate
+* mySql
+----
+
+=== Abordagem - Parte 1
+----
+* Cadastro e listagem de produtos
+* Redirect com Escopo de Flash - Forward e Redirect com FlashAttribute.
+* Validação e conversão de dados - BeanValidation validando os dados de input.
+* Trabalhando com datas - Bean de padrão de data brasileiro.
+* Enviando arquivos ao servidor - Utilizando o MultipartFile.
+* URLs amigáveis
+* Expondo atributos no JSP
+* Escopo sessão - Spring Bean Scopes.
+* Carrinho de compras
+* Finalizando o carrinho (com pagamento simulado em API externa)
+----
+
+=== Abordagem - Parte 2
+----
+* Desempenho com Cache - CacheManager
+* Criação do Serviço Rest - ViewResolver
+* Usando o Bootstrap
+* Spring Security - Autenticação com regra, controle de exibição de funções e customização da tela de login
+* Views com Template - Separando cabeçalho e rodapé para uso geral da aplicação
+* i18n - Intenacionalização da aplicação
+* Testando a aplicação
+----
+
+---
+
+Inspirado nos cursos: *Spring MVC I: Criando aplicações web* e *Spring MVC II: Integração, cache, segurança e templates* da https://www.alura.com.br/[Alura | Cursos online de tecnologia]
+
