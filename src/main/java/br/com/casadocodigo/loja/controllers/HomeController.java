@@ -44,7 +44,7 @@ public class HomeController {
 		Usuario usuario = new Usuario();
 		usuario.setNome("Hugo");
 		usuario.setEmail("hugobezerrapimentel@gmail.com");
-		usuario.setSenha("$2a$10$nz.IGfjFu1buBvKKZEx51O7qghyyNnrf9nDhLruAsyutGpws.0SWm");
+		usuario.setSenha("$2a$10$lt7pS7Kxxe5JfP.vjLNSyOXP11eHgh7RoPxo5fvvbMCZkCUss2DGu");
 		usuario.setRoles(Collections.singletonList(new Role("ROLE_ADMIN")));
 
 		usuarioDAO.gravar(usuario);
