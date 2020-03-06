@@ -21,6 +21,8 @@ import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.validation.Validator;
 import org.springframework.web.accept.ContentNegotiationManager;
@@ -40,6 +42,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 @EnableWebMvc
@@ -171,6 +174,30 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	public LocaleResolver localeResolver(){
 		return new CookieLocaleResolver();
 	}
+
+	/*
+
+    Configuração para o envio do e-mail pela aplicação
+
+    */
+
+	@Bean
+	public MailSender mailSender(){
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setUsername("email@email.com");
+        mailSender.setPassword("senha");
+        mailSender.setPort(587);
+
+        Properties mailProperties = new Properties();
+        mailProperties.put("mail.smtp.auth", true);
+        mailProperties.put("mail.smtp.starttls.enable", true);
+
+        mailSender.setJavaMailProperties(mailProperties);
+
+        return mailSender;
+    }
+
 
 	/*
 

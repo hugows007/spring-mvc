@@ -26,7 +26,7 @@ Projeto desenvolvido e disponibilizado para fins de consultas.
 * Expondo atributos no JSP
 * Escopo sessão - Spring Bean Scopes.
 * Carrinho de compras
-* Finalizando o carrinho (com pagamento simulado em API externa)
+* Finalizando o carrinho - Com pagamento simulado em API externa usando restTemplate
 ----
 
 === Abordagem - Parte 2
@@ -36,11 +36,16 @@ Projeto desenvolvido e disponibilizado para fins de consultas.
 * Usando o Bootstrap
 * Spring Security - Autenticação com regra, controle de exibição de funções e customização da tela de login
 * Views com Template - Separando cabeçalho e rodapé para uso geral da aplicação
-* i18n - Intenacionalização da aplicação
-* Testando a aplicação
+* i18n - Internacionalização da aplicação
+* Testes na aplicação - JUnit e Spring Test
 ----
 
 ---
 
-Inspirado nos cursos: *Spring MVC I: Criando aplicações web* e *Spring MVC II: Integração, cache, segurança e templates* da https://www.alura.com.br/[Alura | Cursos online de tecnologia]
+Inspirado nos cursos:
+
+* *Spring MVC I: Criando aplicações web* e
+* *Spring MVC II: Integração, cache, segurança e templates*
+
+https://www.alura.com.br/[Alura | Cursos online de tecnologia]
 

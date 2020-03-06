@@ -2,7 +2,11 @@ package br.com.casadocodigo.loja.controllers;
 
 import java.util.concurrent.Callable;
 
+import br.com.casadocodigo.loja.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,22 +27,41 @@ public class PagamentoController {
 	
 	@Autowired
 	RestTemplate restTemplate;
+
+	@Autowired
+	private MailSender sender;
 	
 	@RequestMapping(value="/finalizar", method=RequestMethod.POST)
-	public ModelAndView finalizar(RedirectAttributes model){
+	public ModelAndView finalizar(@AuthenticationPrincipal Usuario usuario, RedirectAttributes model){
 		String uri = "http://book-payment.herokuapp.com/payment";
 		
 		try {
 			String response = restTemplate.postForObject(uri, new DadosPagamento(carrinho.getTotal()), String.class);
 			model.addFlashAttribute("message", response);
 			System.out.println(response);
+
+			//TODO - Enviar e-mail desativado
+			//enviaEmailCompraProduto(usuario);
+
 			//método para tirar todos os livros do carrinho
 			this.carrinho.limpa();
 			return new ModelAndView("redirect:/");
+
 		} catch (HttpClientErrorException e) {
 			e.printStackTrace();
 			model.addFlashAttribute("message", "Valor maior que o permitido! Compra negada!");
 			return new ModelAndView("redirect:/");
 		}
+	}
+
+	private void enviaEmailCompraProduto(Usuario usuario) {
+		SimpleMailMessage email = new SimpleMailMessage();
+		email.setSubject("Compra finalizada com sucesso");
+		//email.setTo(usuario.getEmail());
+		email.setTo("algumemail@gmail.com");
+		email.setText("Compra aprovada com sucesso no valor de " + carrinho.getTotal());
+		email.setFrom("compras@casadocodigo.com.br");
+
+		sender.send(email);
 	}
 }
