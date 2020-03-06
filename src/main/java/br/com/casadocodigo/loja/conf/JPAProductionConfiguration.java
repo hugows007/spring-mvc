@@ -13,7 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Properties;
 
-@Profile("!prod")
+@Profile("prod")
 @EnableTransactionManagement
 public class JPAProductionConfiguration {
 
